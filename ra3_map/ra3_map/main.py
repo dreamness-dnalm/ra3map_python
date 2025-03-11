@@ -9,11 +9,15 @@ import os
 import clr
 
 package_dir = os.path.dirname(os.path.abspath(__file__))
-dll_path = os.path.join(package_dir, "lib", 'MapCoreLibMod.dll')
-if not os.path.exists(dll_path):
-    raise Exception(f"Cannot find {dll_path}")
+dll_dir = os.path.join(package_dir, "lib")
+if not os.path.exists(dll_dir):
+    raise Exception(f"Cannot find {dll_dir}")
+
+for f in os.listdir(dll_dir):
+    if f.endswith(".dll"):
+        clr.AddReference(os.path.join(dll_dir, f))
+
 sys.path.append(package_dir)
-clr.AddReference(dll_path)
 
 clr.AddReference("MapCoreLibMod")
 from MapCoreLib.Core.Util import PathUtil
