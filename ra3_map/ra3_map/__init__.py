@@ -20,6 +20,6 @@ for f in os.listdir(dll_dir):
 sys.path.append(package_dir)
 
 clr.AddReference("MapCoreLibMod")
-from MapCoreLib.Core.Util import PathUtil
+clr.AddReference("Ra3MapBridge")
 
-print(PathUtil.RA3MapFolder)
+import ra3_map
