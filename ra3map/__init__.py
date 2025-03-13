@@ -22,4 +22,4 @@ sys.path.append(package_dir)
 clr.AddReference("MapCoreLibMod")
 clr.AddReference("Ra3MapBridge")
 
-import ra3_map
+import ra3_map_
