@@ -23,3 +23,6 @@ clr.AddReference("MapCoreLibMod")
 clr.AddReference("Ra3MapBridge")
 
 import ra3_map_
+from .ra3map import Ra3Map
+
+__all__ = ['Ra3Map']
