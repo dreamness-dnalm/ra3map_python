@@ -22,7 +22,14 @@ sys.path.append(package_dir)
 clr.AddReference("MapCoreLibMod")
 clr.AddReference("Ra3MapBridge")
 
-import ra3_map_
+import ra3map
 from .ra3map import Ra3Map
 
-__all__ = ['Ra3Map']
+import ra3map.model
+from .model.passability import PassabilityEnum
+from .model.texture import TextureEnum
+from .model.waypoint_model import WaypointModel
+from .model.team_model import TeamModel
+from .model.object_model import ObjectModel
+
+__all__ = ['Ra3Map', 'PassabilityEnum', 'TextureEnum', 'WaypointModel', 'TeamModel', 'ObjectModel']
