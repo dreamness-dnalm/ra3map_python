@@ -1,7 +1,7 @@
 from typing import List
 
 from Ra3MapBridge import Ra3MapWrap
-from MapCoreLib.Core.Util import PathUtil
+from MapCoreLibMod.Core.Util import PathUtil
 
 from ra3map.model.object_model import ObjectModel
 from ra3map.model.passability import PassabilityEnum
