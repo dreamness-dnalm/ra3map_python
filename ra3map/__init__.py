@@ -25,11 +25,12 @@ clr.AddReference("Ra3MapBridge")
 import ra3map
 from .ra3map import Ra3Map
 
-import ra3map.model
-from .model.passability import PassabilityEnum
-from .model.texture import TextureEnum
-from .model.waypoint_model import WaypointModel
-from .model.team_model import TeamModel
-from .model.object_model import ObjectModel
+import ra3map.models
+from ra3map.enums.passability_enum import PassabilityEnum
+from ra3map.enums.texture_enum import TextureEnum
+from .models.waypoint_model import WaypointModel
+from .models.team_model import TeamModel
+from .models.object_model import ObjectModel
+from .models.player_model import PlayerModel
 
-__all__ = ['Ra3Map', 'PassabilityEnum', 'TextureEnum', 'WaypointModel', 'TeamModel', 'ObjectModel']
+__all__ = ['Ra3Map', 'PassabilityEnum', 'TextureEnum', 'WaypointModel', 'TeamModel', 'ObjectModel', 'PlayerModel']

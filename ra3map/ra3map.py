@@ -3,11 +3,13 @@ from typing import List
 from Ra3MapBridge import Ra3MapWrap
 from MapCoreLibMod.Core.Util import PathUtil
 
-from ra3map.model.object_model import ObjectModel
-from ra3map.model.passability import PassabilityEnum
-from ra3map.model.team_model import TeamModel
-from ra3map.model.texture import TextureEnum
-from ra3map.model.waypoint_model import WaypointModel
+from ra3map.enums.passability_enum import PassabilityEnum
+from ra3map.enums.texture_enum import TextureEnum
+
+from ra3map.models.player_model import PlayerModel
+from ra3map.models.object_model import ObjectModel
+from ra3map.models.team_model import TeamModel
+from ra3map.models.waypoint_model import WaypointModel
 
 
 class Ra3Map:
@@ -26,15 +28,15 @@ class Ra3Map:
         return PathUtil.RA3MapFolder
 
     @staticmethod
-    def new_map(width: int, height: int, border: int, map_name: str, 
+    def new_map(playable_width: int, playable_height: int, border_with: int, map_name: str,
                 init_player_start_waypoint_cnt=2,
                 output_path: str = None,
-                default_texture='Dirt_Yucatan03'):
+                default_texture: TextureEnum=TextureEnum.Dirt_Yucatan03):
         """
         Create a new map
-        :param width: map width
-        :param height: map height
-        :param border: map border width
+        :param playable_width: map width
+        :param playable_height: map height
+        :param border_with: map border width
         :param map_name: map name
         :param output_path: the parent path of the map, if None, use the default path
         :param default_texture: default texture
@@ -42,11 +44,8 @@ class Ra3Map:
         """
         if output_path is None:
             output_path = Ra3Map.get_default_map_path()
-        playable_width = width - 2 * border
-        playable_height = height - 2 * border
-        if playable_width <= 0 or playable_height <= 0:
-            raise ValueError("playable_width or playable_height is less than 0")
-        return Ra3Map(Ra3MapWrap.NewMap(output_path, map_name, playable_width, playable_height, border, init_player_start_waypoint_cnt,default_texture))
+
+        return Ra3Map(Ra3MapWrap.NewMap(output_path, map_name, playable_width, playable_height, border_with, init_player_start_waypoint_cnt,default_texture.value))
 
     @staticmethod
     def load_map(map_name: str, parent_path: str = None):
@@ -196,7 +195,7 @@ class Ra3Map:
         Suggestions: call this function after you have set the passability of the terrain.
         :return:
         """
-        self._map.UpdatePassability()
+        self._map.UpdatePassabilityMap()
 
     def set_terrain_height(self, x: int, y: int, height: float):
         """
@@ -206,7 +205,7 @@ class Ra3Map:
         :param height:
         :return:
         """
-        self._map.SetHeight(x, y, height)
+        self._map.SetTerrainHeight(x, y, height)
 
     def get_terrain_height(self, x: int, y: int):
         """
@@ -215,7 +214,7 @@ class Ra3Map:
         :param y:
         :return:
         """
-        return self._map.GetHeight(x, y)
+        return self._map.GetTerrainHeight(x, y)
 
 
     # ---------  team ----------
@@ -236,13 +235,13 @@ class Ra3Map:
         """
         return self._map.AddTeam(team_name, belong_to_player_name)
 
-    def remove_team(self, team_name: str) -> bool:
+    def remove_team(self, team_name: str, belong_to_player_name: str) -> bool:
         """
         Remove a team
         :param team_name:
         :return: is success
         """
-        return self._map.RemoveTeam(team_name)
+        return self._map.RemoveTeam(team_name, belong_to_player_name)
 
 
     # ---------  object ----------
@@ -292,13 +291,28 @@ class Ra3Map:
         """
         return self._map.AddWaypoint(waypoint_name, x, y)
 
-    def remove_waypoint(self, unique_id: str) -> bool:
+    def remove_waypoint(self, waypoint_name: str) -> bool:
         """
         Remove a waypoint
-        :param unique_id:
+        :param waypoint_name:
         :return:
         """
-        return self._map.RemoveObjectOrWaypoint(unique_id)
+        return self._map.RemoveWaypoint(waypoint_name)
+
+    def add_player_start_waypoint(self, player_index: int, x: float, y: float) -> WaypointModel:
+        """
+        Add a player start waypoint
+        :return:
+        """
+        return self._map.AddPlayerStartWaypoint(player_index, x, y)
+
+    def get_waypoint(self, waypoint_name) -> WaypointModel:
+        """
+        Get a waypoint by name
+        :param waypoint_name:
+        :return:
+        """
+        return self._map.GetWaypoint(waypoint_name)
 
     # ---------  basic info ----------
 
@@ -326,6 +340,31 @@ class Ra3Map:
         """
         return self._map.MapBorderWidth
 
+    @property
+    def map_playable_width(self):
+        """
+        Get the map playable width
+        :return:
+        """
+        return self._map.MapPlayableWidth
+
+    @property
+    def map_playable_height(self):
+        """
+        Get the map playable height
+        :return:
+        """
+        return self._map.MapPlayableHeight
+
+
+    # --- player ----
+
+    def get_players(self) -> List[PlayerModel]:
+        """
+        Get the players
+        :return:
+        """
+        return self._map.GetPlayers()
 
 
 

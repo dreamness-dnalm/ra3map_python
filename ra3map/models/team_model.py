@@ -36,3 +36,11 @@ class TeamModel:
         :return:
         """
         raise NotImplementedError()
+
+    @property
+    def team_full_name(self):
+        """
+        get team's full name (player_name/team_name)
+        :return:
+        """
+        raise NotImplementedError()

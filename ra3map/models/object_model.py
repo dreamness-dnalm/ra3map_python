@@ -16,7 +16,7 @@ class ObjectModel:
     @angle.setter
     def angle(self, value: float):
         """
-        Set the angle of the object
+        Set the angle of the object, default 0f
         :param value:
         :return:
         """
@@ -82,15 +82,15 @@ class ObjectModel:
         raise NotImplementedError()
 
     @property
-    def belong_to_team_name(self) -> str:
+    def belong_to_team_full_name(self) -> str:
         """
         Get the team name of the object
         :return:
         """
         raise NotImplementedError()
 
-    @belong_to_team_name.setter
-    def belong_to_team_name(self, value: str):
+    @belong_to_team_full_name.setter
+    def belong_to_team_full_name(self, value: str):
         """
         Set the team name of the object
         :param value:
@@ -118,7 +118,7 @@ class ObjectModel:
     @property
     def initial_health(self) -> int:
         """
-        Get the initial health percentage of the object
+        Get the initial health percentage of the object, default 100
         :return:
         """
         raise NotImplementedError()
@@ -126,7 +126,7 @@ class ObjectModel:
     @initial_health.setter
     def initial_health(self, value: int):
         """
-        Set the initial health percentage of the object
+        Set the initial health percentage of the object, default 100
         :param value:
         :return:
         """
@@ -135,7 +135,7 @@ class ObjectModel:
     @property
     def enable(self) -> bool:
         """
-        Get the enable status of the object
+        Get the enable status of the object, default True
         :return:
         """
         raise NotImplementedError()
@@ -143,7 +143,7 @@ class ObjectModel:
     @enable.setter
     def enable(self, value: bool):
         """
-        Set the enable status of the object
+        Set the enable status of the object, default True
         :param value:
         :return:
         """
@@ -152,7 +152,7 @@ class ObjectModel:
     @property
     def indestructible(self) -> bool:
         """
-        Get the indestructible status of the object
+        Get the indestructible status of the object, default False
         :return:
         """
         raise NotImplementedError()
@@ -160,7 +160,7 @@ class ObjectModel:
     @indestructible.setter
     def indestructible(self, value: bool):
         """
-        Set the indestructible status of the object
+        Set the indestructible status of the object, default False
         :param value:
         :return:
         """
@@ -169,7 +169,7 @@ class ObjectModel:
     @property
     def unsellable(self) -> bool:
         """
-        Get the unsellable status of the object
+        Get the unsellable status of the object, default False
         :return:
         """
         raise NotImplementedError()
@@ -177,7 +177,7 @@ class ObjectModel:
     @unsellable.setter
     def unsellable(self, value: bool):
         """
-        Set the unsellable status of the object
+        Set the unsellable status of the object, default False
         :param value:
         :return:
         """
@@ -186,7 +186,7 @@ class ObjectModel:
     @property
     def powered(self) -> bool:
         """
-        Get the powered status of the object
+        Get the powered status of the object, default True
         :return:
         """
         raise NotImplementedError()
@@ -194,7 +194,7 @@ class ObjectModel:
     @powered.setter
     def powered(self, value: bool):
         """
-        Set the powered status of the object
+        Set the powered status of the object, default True
         :param value:
         :return:
         """
@@ -203,7 +203,7 @@ class ObjectModel:
     @property
     def recruitable_ai(self):
         """
-        Get the recruitable ai of the object
+        Get the recruitable ai of the object, default True
         :return:
         """
         raise NotImplementedError()
@@ -211,7 +211,7 @@ class ObjectModel:
     @recruitable_ai.setter
     def recruitable_ai(self, value):
         """
-        Set the recruitable ai of the object
+        Set the recruitable ai of the object, default True
         :param value:
         :return:
         """
@@ -220,7 +220,7 @@ class ObjectModel:
     @property
     def targetable(self) -> bool:
         """
-        Get the targetable status of the object
+        Get the targetable status of the object, default False
         :return:
         """
         raise NotImplementedError()
@@ -228,7 +228,7 @@ class ObjectModel:
     @targetable.setter
     def targetable(self, value: bool):
         """
-        Set the targetable status of the object
+        Set the targetable status of the object, default False
         :param value:
         :return:
         """
@@ -237,7 +237,7 @@ class ObjectModel:
     @property
     def sleeping(self) -> bool:
         """
-        Get the sleeping status of the object
+        Get the sleeping status of the object, default False
         :return:
         """
         raise NotImplementedError()
@@ -245,7 +245,7 @@ class ObjectModel:
     @sleeping.setter
     def sleeping(self, value: bool):
         """
-        Set the sleeping status of the object
+        Set the sleeping status of the object, default False
         :param value:
         :return:
         """
@@ -254,7 +254,7 @@ class ObjectModel:
     @property
     def stance(self) -> str:
         """
-        Get the stance of the object
+        Get the stance of the object, default GUARD
         options: GUARD / AGGRESSIVE / HOLD_POSITION / HOLD_FIRE
         :return:
         """
@@ -263,7 +263,7 @@ class ObjectModel:
     @stance.setter
     def stance(self, value: str):
         """
-        Set the stance of the object
+        Set the stance of the object, default GUARD
         options: GUARD / AGGRESSIVE / HOLD_POSITION / HOLD_FIRE
         :param value:
         :return:
@@ -273,7 +273,7 @@ class ObjectModel:
     @property
     def experience_level(self) -> int:
         """
-        Get the experience level of the object.
+        Get the experience level of the object, default 1
         range: [1, 4]
         :return:
         """
@@ -282,7 +282,7 @@ class ObjectModel:
     @experience_level.setter
     def experience_level(self, value: int):
         """
-        Set the experience level of the object.
+        Set the experience level of the object, default 1
         range: [1, 4]
         :param value:
         :return:
