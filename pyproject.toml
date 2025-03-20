@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ra3map"
-version = "0.1.11"
+version = "1.0.0"
 description = "a operator for ra3 map"
 readme = "README.md"
 authors = [
@@ -18,6 +18,6 @@ requires-python = ">=3.5"
 
 [project.urls]
 Homepage = "https://github.com/dreamness-dnalm/ra3map_python"
-#Documentation = "https://github.com/yourusername/my_package/wiki"
+Documentation = "https://github.com/dreamness-dnalm/ra3map_python/wiki"
 Repository = "https://github.com/dreamness-dnalm/ra3map_python"
-#Issues = "https://github.com/yourusername/my_package/issues"
+Issues = "https://github.com/dreamness-dnalm/ra3map_python/issues"
