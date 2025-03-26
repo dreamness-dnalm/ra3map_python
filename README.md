@@ -1,6 +1,11 @@
 # ra3map_python
 [English Document](https://github.com/dreamness-dnalm/ra3map_python/wiki) | [中文文档](https://www.yuque.com/muzeqaq/ra3mapwiki/as3u8wg2spzdypg1)  
 
+# install or upgrade
+```shell
+pip install --upgrade ra3map
+```
+
 # what ra3map can do?
 * new map / edit map
 * modify terrain height
