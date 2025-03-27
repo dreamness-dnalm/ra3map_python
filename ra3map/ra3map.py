@@ -253,15 +253,15 @@ class Ra3Map:
         """
         return self._map.GetObjects()
 
-    def add_object(self, object_name: str, x: float, y: float) -> ObjectModel:
+    def add_object(self, type_name: str, x: float, y: float) -> ObjectModel:
         """
         Add an object
-        :param object_name:
+        :param type_name:
         :param x:
         :param y:
         :return:
         """
-        return self._map.AddObject(object_name, x, y)
+        return self._map.AddObject(type_name, x, y)
 
     def remove_object(self, unique_id: str) -> bool:
         """
@@ -359,12 +359,12 @@ class Ra3Map:
 
     # --- player ----
 
-    def get_players(self) -> List[PlayerModel]:
-        """
-        Get the players
-        :return:
-        """
-        return self._map.GetPlayers()
+    # def get_players(self) -> List[PlayerModel]:
+    #     """
+    #     Get the players
+    #     :return:
+    #     """
+    #     return self._map.GetPlayers()
 
 
 
