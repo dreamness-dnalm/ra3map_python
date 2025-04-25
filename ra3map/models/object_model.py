@@ -133,15 +133,15 @@ class ObjectModel:
         raise NotImplementedError()
 
     @property
-    def enable(self) -> bool:
+    def enabled(self) -> bool:
         """
         Get the enable status of the object, default True
         :return:
         """
         raise NotImplementedError()
 
-    @enable.setter
-    def enable(self, value: bool):
+    @enabled.setter
+    def enabled(self, value: bool):
         """
         Set the enable status of the object, default True
         :param value:

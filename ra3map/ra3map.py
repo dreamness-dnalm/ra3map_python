@@ -149,7 +149,18 @@ class Ra3Map:
 
     # ---------  texture ----------
 
-    def set_tile_texture(self, x: int, y: int, texture: TextureEnum):
+    @staticmethod
+    def register_texture(name: str,  texture_file_name, bump_texture_file_name: str):
+        """
+        Register a new texture(for a mod)
+        :param name: texture name (id)
+        :param texture_file_name:
+        :param bump_texture_file_name:
+        :return:
+        """
+        Ra3MapWrap.RegisterTexture(name, texture_file_name, bump_texture_file_name)
+
+    def set_tile_texture(self, x: int, y: int, texture: TextureEnum|str):
         """
         Set the texture of the tile
         :param x:
@@ -157,7 +168,12 @@ class Ra3Map:
         :param texture:
         :return:
         """
-        self._map.SetTileTexture(x, y, texture.value)
+        if isinstance(texture, TextureEnum):
+            self._map.SetTileTexture(x, y, texture.value)
+        elif isinstance(texture, str):
+            self._map.SetTileTexture(x, y, texture)
+        else:
+            raise ValueError("texture must be TextureEnum or str")
 
     def get_tile_texture(self, x: int, y: int) -> TextureEnum:
         """
